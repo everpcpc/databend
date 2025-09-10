@@ -143,6 +143,8 @@ fi
 
 killall -9 databend-query || true
 
+sleep 2
+
 echo 'Start databend-query node-1'
 nohup env RUST_BACKTRACE=1 target/${BUILD_PROFILE}/databend-query -c scripts/ci/deploy/config/databend-query-node-1.toml --internal-enable-sandbox-tenant >./.databend/query-1.out 2>&1 &
 
