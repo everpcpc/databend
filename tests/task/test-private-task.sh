@@ -22,8 +22,8 @@ for node in 1 2; do
     sed -i '/^cloud_control_grpc_server_address/d' $CONFIG_FILE
 done
 
-# Start meta server
-echo 'Start Meta service HA cluster(3 nodes)...'
+# Start meta service
+echo 'Start Meta service ...'
 
 mkdir -p ./.databend/
 
