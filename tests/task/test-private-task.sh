@@ -32,16 +32,6 @@ python3 scripts/ci/wait_tcp.py --timeout 30 --port 9191
 
 sleep 1
 
-nohup ./target/${BUILD_PROFILE}/databend-meta -c scripts/ci/deploy/config/databend-meta-node-2.toml >./.databend/meta-2.out 2>&1 &
-python3 scripts/ci/wait_tcp.py --timeout 30 --port 28202
-
-sleep 1
-
-nohup ./target/${BUILD_PROFILE}/databend-meta -c scripts/ci/deploy/config/databend-meta-node-3.toml >./.databend/meta-3.out 2>&1 &
-python3 scripts/ci/wait_tcp.py --timeout 30 --port 28302
-
-sleep 1
-
 # Start only 2 query nodes
 echo 'Start databend-query node-1'
 nohup env RUST_BACKTRACE=1 target/${BUILD_PROFILE}/databend-query -c scripts/ci/deploy/config/databend-query-node-1.toml --internal-enable-sandbox-tenant >./.databend/query-1.out 2>&1 &
